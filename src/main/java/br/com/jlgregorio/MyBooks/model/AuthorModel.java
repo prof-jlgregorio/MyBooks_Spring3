@@ -22,6 +22,10 @@ public class AuthorModel {
     private String name;
 
     @Column(nullable = false)
+    @Setter @Getter
+    private String gender;
+
+    @Column(nullable = false)
     @Getter @Setter
     private String country;
 

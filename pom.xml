@@ -56,6 +56,12 @@
 			<artifactId>spring-hateoas</artifactId>
 		</dependency>
 
+		<dependency>
+			<groupId>org.flywaydb</groupId>
+			<artifactId>flyway-core</artifactId>
+			<version>9.6.0</version>
+		</dependency>
+
 	</dependencies>
 
 	<build>
@@ -64,6 +70,22 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
+
+			<!-- flyway plugin -->
+			<plugin>
+				<groupId>org.flywaydb</groupId>
+				<artifactId>flyway-maven-plugin</artifactId>
+				<version>8.5.13</version>
+				<configuration>
+					<url>jdbc:postgresql://localhost:5432/mybooks</url>
+					<user>postgres</user>
+					<password>postdba</password>
+					<schemas>
+						<schema>public</schema>
+					</schemas>
+				</configuration>
+			</plugin>
+
 		</plugins>
 	</build>
 

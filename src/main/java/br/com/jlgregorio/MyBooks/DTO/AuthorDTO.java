@@ -16,6 +16,9 @@ public class AuthorDTO extends RepresentationModel<AuthorDTO> {
 
     @Getter @Setter
     private String name;
+
+    @Getter @Setter
+    private String gender;
     @Getter @Setter
     private String country;
 

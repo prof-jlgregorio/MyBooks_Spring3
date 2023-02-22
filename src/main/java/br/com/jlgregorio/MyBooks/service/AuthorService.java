@@ -37,6 +37,7 @@ public class AuthorService {
             entity.setId(authorDTO.getId());
             entity.setName(authorDTO.getName());
             entity.setCountry(authorDTO.getCountry());
+            entity.setGender(authorDTO.getGender());
             return CustomModelMapper.parseObject(repository.save(entity), AuthorDTO.class);
         } else {
             return null;

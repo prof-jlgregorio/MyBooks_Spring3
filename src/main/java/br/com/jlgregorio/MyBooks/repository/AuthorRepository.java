@@ -17,4 +17,5 @@ public interface AuthorRepository extends JpaRepository<AuthorModel, Integer> {
 
     public Page<AuthorModel> findByNameContainsIgnoreCase(String name, Pageable pageable);
 
+    public Page<AuthorModel> findByGenderEqualsIgnoreCase(String gender, Pageable pageable);
 }
