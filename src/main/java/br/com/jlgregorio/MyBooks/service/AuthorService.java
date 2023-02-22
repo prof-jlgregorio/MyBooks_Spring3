@@ -17,17 +17,13 @@ public class AuthorService {
 
     public AuthorDTO findById(int id){
        var entity = repository.findById(id);
-       if (entity.isPresent()){
-           return CustomModelMapper.parseObject(entity.get(), AuthorDTO.class);
-       } else {
-           return null;
-       }
+        return entity.map(authorModel -> CustomModelMapper.parseObject(authorModel, AuthorDTO.class)).orElse(null);
     }
 
-    public AuthorDTO create(AuthorDTO authorVO){
-        var entity = CustomModelMapper.parseObject(authorVO, AuthorModel.class);
-        var vo = repository.save(entity);
-        return CustomModelMapper.parseObject(vo, AuthorDTO.class);
+    public AuthorDTO create(AuthorDTO authorDTO){
+        var entity = CustomModelMapper.parseObject(authorDTO, AuthorModel.class);
+        var model = repository.save(entity);
+        return CustomModelMapper.parseObject(model, AuthorDTO.class);
     }
 
     public AuthorDTO update(AuthorDTO authorDTO){
@@ -44,7 +40,7 @@ public class AuthorService {
         }
     }
 
-    public void delete(Integer id){
+    public void delete(int id){
         var found = repository.findById(id);
         repository.delete(found.get());
     }
